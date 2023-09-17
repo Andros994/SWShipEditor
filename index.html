@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <title>SW Ship Editor</title>
+</head>
+<body id="body" style="background-color: rgb(238, 238, 238);">
+    <center>
+        <h2 class="m-3">Star Wars Ship Editor</h2>
+    </center>
+
+    <div class="card p-2 m-2">
+        <div class="col-12 p-3 d-flex">
+            <div class="col-lg-6">
+                <label>Taglia della nave</label>
+                <select name="tagliaNave" id="tagliaNave">
+                    <option value="" id="defaultTaglia" selected disabled>Seleziona taglia della nave</option>
+                </select>
+            </div>
+            <div id="descrizioneTaglia"></div>
+        </div>
+        <div class="col-12 p-3 d-flex">
+            <div class="col-lg-6">
+                <label>Tier della nave</label>
+                <select name="tierNave" id="tierNave">
+                    <option value="" id="defaultTaglia" selected disabled>Seleziona tier della nave</option>
+                    <option value="0" id="tier_0">0</option>
+                    <option value="1" id="tier_1">1</option>
+                    <option value="2" id="tier_2">2</option>
+                    <option value="3" id="tier_3">3</option>
+                    <option value="4" id="tier_4">4</option>
+                    <option value="5" id="tier_5">5</option>
+                </select>
+            </div>
+            <div class="col-6" id="descrizioneTier"></div>
+        </div>
+        <div class="col-12 p-3 d-flex">
+            <div id="" class="col-lg-6">
+                <label for="" id="costoBaseNave">Seleziona taglia della nave</label>
+            </div>
+        </div>
+        <div class="col-12 p-3 d-flex">
+            <div id="" class="col-lg-6">
+                <label for="" id="costoTierNave">Seleziona tier della nave</label>        
+            </div>
+        </div>
+        <div class="col-12 p-3 d-flex">
+            <div id="" class="col-lg-6">
+                <label for="" id="costoTotale">Costo totale: </label>        
+            </div>
+        </div>
+        <div class="col-12 p-3 d-flex">
+            <div id="" class="col-lg-6">
+                <label for="" id="cargoNave">Cargo: </label>        
+            </div>
+        </div>
+        <!-- <div class="col-12 p-3 d-flex">
+            <div id="" class="col-lg-12">
+                <div id="divForzaLavoro" class="col-lg-12"></div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="p-2">
+        
+        <div id="shipInfo" class="card p-2">
+            <h4>Caratteristiche</h4>
+                        
+            <ul style="list-style-type:none;">
+                <li><label style="padding-right: 5px;">AC</label><label id="ac"></label></li>
+                <li><label style="padding-right: 5px;">Scafo</label><label id="pf"></label></li>
+                <li><label style="padding-right: 5px;">Scudo</label><label id="scudo"></label></li>
+                <li><label style="padding-right: 5px;">AC Bonus</label><label id="acBonus"></label></li>
+                <li><label style="padding-right: 5px;">Rigenerazione Scudo</label><label id="shieldRegen"></label></li>
+                <li><label style="padding-right: 5px;">TPC</label><label id="">1d20+DES del pilota</label></li>
+            </ul>
+
+        </div>
+        
+        <div id="divArmi" class="card p-2 mt-2">
+            <h4>Armamenti</h4>
+
+            <h5>Armi Primarie</h5>
+            <select class="weaponSelect" id="selectPrimaryWeapon">
+            </select>
+            <ul id="listaPrimary" style="list-style-type:none;">
+                <li>Armi equipaggiate</li>
+            </ul>
+
+            <h5>Armi Secondarie</h5>
+            <select class="weaponSelect" id="selectSecondaryWeapon">
+            </select>
+            <ul id="listaSecondary" style="list-style-type:none;">
+                <li>Armi equipaggiate</li>
+            </ul>
+
+            <h5>Armi Terziarie</h5>
+            <select class="weaponSelect" id="selectTertiaryWeapon">
+            </select>
+            <ul id="listaTertiary" style="list-style-type:none;">
+                <li>Armi equipaggiate</li>
+            </ul>
+            
+            <h5>Armi Quaternarie</h5>
+            <select class="weaponSelect" id="selectQuaternaryWeapon">
+            </select>
+            <ul id="listaQuaternay" style="list-style-type:none;">
+                <li>Armi equipaggiate</li>
+            </ul>
+
+        </div>
+
+        <div class="shipsClass mt-2" id="tinyShip">
+            <div class="card p-2 cardSize mt-2" id="cardTiny1">
+                <h4>Tattiche da Sciame</h4>
+                <p>
+                    La tua astronave è più efficace quando lavora in gruppo.
+                    La tua nave sfrutta al massimo ogni opportunità fornita dagli alleati. Quando un membro dell'equipaggio al timone effettuerebbe un tiro per colpire contro una nave più grande e c'è una nave alleata entro 200 piedi dal tuo bersaglio, può lanciare un dado Tattica dello Sciame, che è un d4, e aggiungerlo al tiro per colpire. Puoi farlo dopo aver effettuato il tiro, ma prima che il risultato sia noto.
+                    Il dado Tattiche Sciame della tua nave cambia quando raggiunge determinati livelli. Il dado diventa un d6 al 2° livello, un d8 al 3° livello, un d10 al 4° livello e un d12 al 5° livello.
+                    Questa funzionalità può essere utilizzata un numero di volte pari a 2 volte il tier della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene riparata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardTiny2">
+                <h4>Acrobazie Agili</h4>
+                <p>
+                    Sempre al 2° livello, la tua nave è così agile che può ignorare il terreno difficile non potenziato, e quando vorresti usare un'azione per liberarti da un effetto che sta trascinando o trattenendo in altro modo la tua nave, puoi invece usare un'azione bonus.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardTiny3">
+                <h4>Uncanny Dodge</h4>
+                <p>
+                    Al 3° livello, l'agilità della tua nave le consente di schivare determinati effetti ad area. Quando la tua nave è soggetta a un effetto, come un siluro protonico o una carica sismica, che le consente di effettuare un tiro salvezza su Destrezza per subire solo la metà dei danni, invece non subisce danni se supera il tiro salvezza, e solo metà del danno se fallisce.                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardTiny4">
+                <h4>Difesa a Sciame</h4>
+                <p>
+                    Sempre al 3° livello, la tua nave trae ulteriori vantaggi dall'essere circondata da alleati. La tua nave ottiene un bonus alla CA pari al numero di navi alleate entro 100 piedi da essa. Il bonus ha un valore massimo pari al livello della tua nave (arrotondato per eccesso).            
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardTiny5">
+                <h4>Bersaglio Elusivo</h4>
+                <p>
+                    Sempre al 4° livello, le dimensioni e l'agilità della tua nave rendono facile evitare gli attacchi. Nessun attacco con arma primaria effettuato contro la tua nave può beneficiare del vantaggio finché la tua nave non è disabilitata.                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardTiny6">
+                <h4>Accuratezza</h4>
+                <p>
+                    Al 5° livello, la portata del colpo critico delle armi della tua nave aumenta di 1.
+                </p>
+            </div>
+        </div>
+
+        <div class="shipsClass mt-2" id="smallShip">
+            <div class="card p-2 cardSize mt-2" id="cardSmall1">
+                <h4>Pinpoint Strike</h4>
+                <p>
+                    La tua astronave acquisisce la capacità di scivolare sotto gli scudi di una nave nemica.
+                    Quando la tua nave occupa lo stesso quadretto occupato da una nave bersaglio e il membro dell'equipaggio al timone effettua un tiro di attacco, come reazione, può, prima di lanciare l'attacco, lanciare un dado Colpo Locale, che è un d4, e aggiungerlo a il tiro di attacco. Se invece l’attacco richiede un Tiro Salvezza, puoi sottrarre il dado Colpo Localizzante dal risultato del Tiro Salvezza del bersaglio. Se va a segno o fallisce il Tiro Salvezza, l'attacco infligge danni normali che oltrepassano qualsiasi scudo e colpiscono direttamente lo scafo della nave bersaglio. Questa funzione può essere utilizzata solo una volta per round.
+                    Il dado Pinpoint Strike della tua nave cambia quando raggiunge determinati livelli. Il dado diventa un d6 al 2° livello, un d8 al 3° livello, un d10 al 4° livello e un d12 al 5° livello.
+                    Questa funzionalità può essere utilizzata un numero di volte pari al livello della tua nave. Tutti gli usi spesi vengono recuperati quando la nave si ricarica.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardSmall2">
+                <h4>Retro Thrusters</h4>
+                <p>
+                    Quando un attaccante che un membro dell'equipaggio può vedere infligge danni alla tua nave con un'arma, può usare la sua reazione per spostare immediatamente la nave fino a 50 piedi in una direzione a sua scelta, dimezzando il danno subito dalla tua nave. L'orientamento della nave non cambia.
+                    Una volta utilizzata questa funzione, non potrà essere utilizzata nuovamente finché la nave non viene riparata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardSmall3">
+                <h4>Snubfighter versatile</h4>
+                <p>
+                    A partire dal 3° livello, quando un membro dell'equipaggio effettua, con la nave, una prova di abilità, un tiro per colpire o un tiro salvezza, può usare la sua reazione per avere vantaggio sul tiro. Un membro dell'equipaggio può scegliere di utilizzare questa funzionalità dopo aver effettuato il tiro, ma prima che il GM dica se il tiro ha successo o meno.
+                    Questa funzionalità può essere utilizzata un numero di volte pari al livello della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene riparata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardSmall4">
+                <h4>Snubfighter versatile</h4>
+                <p>
+                    Inoltre al 3° livello, la tua nave può aggiungere metà della sua Forza
+                    modificatore (arrotondato per difetto, minimo uno) ai suoi tiri salvezza su Destrezza.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardSmall5">
+                <h4>Stand By</h4>
+                <p>
+                    Inoltre al 4° livello, la tua nave può essere spinta oltre i suoi limiti normali per un momento. Nel proprio turno, un membro dell'equipaggio può eseguire un'azione aggiuntiva oltre all'azione normale e a un'eventuale azione bonus.
+                    Una volta utilizzata questa funzione, non potrà essere utilizzata nuovamente finché la nave non si ricaricherà.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardSmall6">
+                <h4>Una foglia nel vento</h4>
+                <p>
+                    Al 5° livello, quando un membro dell'equipaggio effettua, con la nave, una prova di abilità, un tiro per colpire o un tiro salvezza, il membro dell'equipaggio può usare la sua reazione per considerare l'importo tirato sul d20 come un 20.
+                    Una volta utilizzata questa funzione, non potrà essere utilizzata nuovamente finché la nave non si ricaricherà.
+                </p>
+            </div>
+        </div>
+        
+        <div class="shipsClass mt-2" id="mediumShip">
+            <div class="card p-2 cardSize mt-2" id="cardmedium1">
+                <h4>Manovre Evasive</h4>
+                <p>
+                    Quando un membro dell'equipaggio al timone tira per l'iniziativa, può immediatamente muovere la nave. Questo movimento avviene prima che venga determinato l'ordine di iniziativa.
+                    L'entità del movimento della nave viene determinata lanciando un dado Manovre Evasive, che è un d4, e moltiplicandolo per 50 piedi. La nave quindi guadagna quel numero di piedi che può muovere o spendere per virare.
+                    Il dado delle manovre evasive della tua nave cambia quando raggiunge determinati livelli. Il dado diventa un d6 al 2° livello, un d8 al 3° livello, un d10 al 4° livello e un d12 al 5° livello.
+                    Questa funzione può essere utilizzata un numero di volte pari a 2 volte il livello della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene riparata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardmedium2">
+                <h4>Astronave Agile</h4>
+                <p>
+                    Al 2° livello, la tua nave può aggiungere metà del suo modificatore di Destrezza (minimo uno) a qualsiasi tiro salvezza effettuato che non includa già quel modificatore.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardmedium3">
+                <h4>Trasporto versatile</h4>
+                <p>
+                    A partire dal 3° livello, quando un membro dell'equipaggio effettua, con la nave, una prova di abilità, un tiro per colpire o un tiro salvezza, può usare la sua reazione per avere vantaggio sul tiro. Un membro dell'equipaggio può scegliere di utilizzare questa funzionalità dopo aver effettuato il tiro, ma prima che il GM dica se il tiro ha successo o meno.
+                    Questa funzione può essere utilizzata un numero di volte pari a 2 volte il livello della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene riparata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardmedium4">
+                <h4>Tenunta Insieme</h4>
+                <p>
+                    Inoltre al 3° livello, quando la tua nave subisce danni mentre è a 0 punti scafo, effettua un tiro salvezza sulla Distruzione, invece di fallire automaticamente.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardmedium5">
+                <h4>Armatura Adattiva</h4>
+                <p>
+                    Quando la tua nave viene colpita da un tiro per colpire, un membro dell'equipaggio al timone può aggiungere il modificatore di Costituzione della nave alla CA, facendo potenzialmente fallire l'attacco.
+                    Questa funzionalità può essere utilizzata un numero di volte pari al livello della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene riparata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardmedium6">
+                <h4>Trasporto d'eccellenza</h4>
+                <p>
+                    A partire dal 5° livello, la tua astronave è la migliore della sua categoria. Due punteggi di caratteristica della tua nave aumentano di 2. Il massimo per questi punteggi aumenta di due.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardmedium7">
+                <h4>La migliore nave del verso</h4>
+                <p>
+                    Sempre al 5° livello, come azione, un membro dell'equipaggio può conferire alla nave resistenza ai danni non potenziati dalle armi della nave per 1 minuto.
+                    Questo effetto termina anticipatamente se la nave viene disabilitata. Una volta utilizzata questa funzione, non potrà essere utilizzata nuovamente finché la nave non si ricaricherà
+                </p>
+            </div>
+        </div>
+        
+        <div class="shipsClass mt-2" id="bigShip">
+            <div class="card p-2 cardSize mt-2" id="cardBig1">
+                <h4>Sfonda Blocco</h4>
+                <p>
+                    La tua astronave acquisisce la capacità di reagire ai danni delle navi di grandi dimensioni.
+                    Come reazione all'essere colpito da un tiro per colpire da una nave Grande o più grande, un membro dell'equipaggio al timone può usare la sua reazione per muovere immediatamente la nave in avanti di un ammontare pari alla metà della sua velocità di volo (arrotondata per difetto) e poi tirare un Blockade Runner dado, che è un d4, e sottrailo dal tiro per colpire attivante, facendolo potenzialmente fallire.
+                    Il dado del Blockade Runner della tua nave cambia quando raggiunge determinati livelli. Il dado diventa un d6 al 2° livello, un d8 al 3° livello, un d10 al 4° livello e un d12 al 5° livello.
+                    Questa funzionalità può essere utilizzata un numero di volte pari a 3 volte il livello della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene riparata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardBig2">
+                <h4>Fuoco Concentrato</h4>
+                <p>
+                    Una volta per turno, quando attacchi una nave di taglia Grande o superiore, ed è stata precedentemente colpita dalle armi di una nave alleata di taglia Grande o superiore dalla fine del suo ultimo turno, hai vantaggio sull'attacco. Se avevi già un vantaggio, puoi invece rilanciare uno dei dadi una volta (a tua scelta).                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardBig3">
+                <h4>Fregata versatile</h4>
+                <p>
+                    Quando un membro dell'equipaggio effettua una prova di abilità, un tiro per colpire o un tiro salvezza con la nave, può usare la sua reazione per avere vantaggio sul tiro. Un membro dell'equipaggio può scegliere di utilizzare questa funzionalità dopo aver effettuato il tiro, ma prima che il GM dica se il tiro ha successo o meno.
+                    Questa funzionalità può essere utilizzata un numero di volte pari a 3 volte il livello della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene riparata.    
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardBig4">
+                <h4>Batteria turbolaser super pesante</h4>
+                <p>
+                    La tua nave è dotata di una versione speciale montata in avanti di un Turbolaser. Si considera che la tua nave soddisfi i requisiti di costituzione di quest'arma indipendentemente dal punteggio di caratteristica della Costituzione della tua nave. Il danno inflitto da questo Turbolaser è 3d12.
+                    Quest'arma non utilizza né conta come punto di fissaggio dell'arma.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardBig5">
+                <h4>Ritirata Tattica</h4>
+                <p>
+                    Quando un membro dell'equipaggio ottiene 1 su una prova di Intelligenza (Astrogazione) per calcolare l'astrogazione, o su un tiro salvezza di Costituzione per mantenere l'avvio dell'iperguida, può lanciare nuovamente il dado. Devono utilizzare il nuovo tiro.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardBig6">
+                <h4>Fregata Top Tier</h4>
+                <p>
+                    La tua astronave è la migliore della sua categoria. Tre dei punteggi di caratteristica della tua nave aumentano di 2. Il massimo per questi punteggi aumenta di 2.</p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardBig7">
+                <h4>Spina Dorsale</h4>
+                <p>
+                    Una volta nel turno di ciascun membro dell'equipaggio, può aggiungere il modificatore di Forza della nave al tiro per colpire o il modificatore di Intelligenza della nave al tiro per i danni di un attacco effettuato. Puoi scegliere di utilizzare questa capacità prima o dopo il tiro, ma prima che venga applicato qualsiasi effetto del tiro.
+                </p>
+            </div>
+        </div>
+        
+        <div class="shipsClass mt-2" id="enormeShip">
+            <div class="card p-2 cardSize mt-2" id="cardEnorme1">
+                <h4>Damage Control</h4>
+                <p>
+                    La tua astronave acquisisce la capacità di mitigare automaticamente i danni delle navi.
+                    Una volta per turno, come reazione al danno inflitto da un'arma della nave, un membro dell'equipaggio può usare la propria reazione e lanciare un dado per il controllo del danno, che è un d4, e sottrarlo dal tiro per il danno.
+                    Il dado per il Controllo dei Danni della tua nave cambia quando raggiunge determinati livelli. Il dado diventa un d6 al 2° livello, un d8 al 3° livello, un d10 al 4° livello e un d12 al 5° livello.
+                    Questa funzionalità può essere utilizzata un numero di volte pari a 4 volte il livello della tua nave. Tutti gli usi consumati vengono recuperati quando la nave viene sottoposta a refitting.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardEnorme2">
+                <h4>Staging Ground</h4>
+                <p>
+                    La capacità delle suite della caserma, degli alloggi e degli alloggi di lusso è raddoppiata. Inoltre, quando i membri dell'equipaggio o delle truppe si schierano, hanno vantaggio sulla prima prova di abilità, tiro per colpire o tiro salvezza effettuato prima della fine del successivo riposo lungo. Una volta che un membro dell'equipaggio o una truppa ha beneficiato di questa funzionalità, non potrà beneficiarne nuovamente finché non avrà completato un riposo lungo.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardEnorme3">
+                <h4>Incrociatore versatile</h4>
+                <p>
+                    Quando un membro dell'equipaggio effettua una prova di caratteristica, un tiro per colpire o un tiro salvezza, può usare la sua reazione per ottenere vantaggio sul tiro. Un membro dell'equipaggio può scegliere di utilizzare questa funzionalità dopo aver effettuato il tiro, ma prima che il GM dica se il tiro ha successo o meno.
+                    Questa funzionalità può essere utilizzata un numero di volte pari a 2 volte il livello della tua nave. Tutti gli usi spesi vengono recuperati quando la nave viene ricaricata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardEnorme4">
+                <h4>Capital Railgun</h4>
+                <p>
+                    La tua nave è equipaggiata con una versione speciale montata anteriormente di un cannone a rotaia Heavy Slug al timone. Si considera che la tua nave soddisfi i requisiti di costituzione di quest'arma indipendentemente dal punteggio di caratteristica della Costituzione della tua nave. Il danno inflitto da questo fucile a rotaia a proiettili pesanti è 7d12.
+                    Quest'arma non utilizza né conta come punto di fissaggio dell'arma.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardEnorme5">
+                <h4>Finacata</h4>
+                <p>
+                    Una volta in ciascuno dei suoi turni, quando un membro dell'equipaggio effettua un attacco con una nave, può effettuare un altro attacco con la stessa arma contro una nave diversa che si trova entro 100 piedi dal bersaglio originale e nel raggio della sua arma.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardEnorme6">
+                <h4>Incrociatore Top Tier</h4>
+                <p>
+                    La tua astronave è la migliore della sua categoria. Uno dei punteggi di caratteristica della tua nave aumenta di 4, e il suo massimo per questo punteggio aumenta di 4. Altri due punteggi di caratteristica aumentano di 2, e il suo massimo per questi punteggi aumenta di 2.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardEnorme7">
+                <h4>Nave Capitale</h4>
+                <p>
+                    Sempre al 5° livello, un membro dell'equipaggio può, come azione bonus, delegare un piano d'azione all'equipaggio. La nave può immediatamente raggiungere la sua velocità di volo e fino a cinque membri dell'equipaggio su quella nave possono usare la loro reazione per intraprendere immediatamente un'azione.
+                    Una volta utilizzata questa funzione, non potrà essere utilizzata nuovamente finché la nave non si ricaricherà.
+                </p>
+            </div>
+        </div>
+        
+        <div class="shipsClass mt-2" id="gargShip">
+            <div class="card p-2 cardSize mt-2" id="cardGarg1">
+                <h4>Potenza di Fuoco</h4>
+                <p>
+                    La potenza di fuoco della tua astronave può sopraffare le navi più grandi.
+                    Quando un membro dell'equipaggio infligge danni a una nave Grande o più grande con un'arma navale, il membro dell'equipaggio può aumentare il danno lanciando un dado Potenza di fuoco superiore, che è un d4, e aggiungerlo al tiro per i danni (non è richiesta alcuna azione).
+                    Il dado Potenza di fuoco superiore della tua nave cambia quando raggiunge determinati livelli. Il dado diventa un d6 al 2° livello, un d8 al 3° livello, un d10 al 4° livello e un d12 al 5° livello.
+                    Questa funzionalità può essere utilizzata un numero di volte pari a 3 volte il livello della tua nave. Tutti gli usi spesi vengono recuperati quando la nave viene ricaricata.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardGarg2">
+                <h4>Dottrina Primaria</h4>
+                <p>
+                    La tua astronave incute timore nei tuoi nemici. Quando i membri dell'equipaggio tirano per l'iniziativa, un membro dell'equipaggio può tentare di spaventare le altre navi. Ogni membro dell'equipaggio schierato su una nave ostile deve effettuare un tiro salvezza di Saggezza contestato da una prova di Carisma (Minaccia). Se il Tiro Salvezza fallisce, i membri dell'equipaggio colpiti subiscono svantaggio alla prima prova di caratteristica, tiro per colpire o tiro salvezza effettuato ogni round per 1 minuto. Alla fine di ciascuno dei loro turni, ripetono questo tiro salvezza, ponendo termine a questo effetto in caso di successo. Inoltre, se superano il tiro salvezza, diventano immuni a questa caratteristica per un giorno.
+                    Una volta utilizzata questa funzione, non potrà essere utilizzata nuovamente finché la nave non si ricaricherà.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardGarg3">
+                <h4>Dreadnought versatile</h4>
+                <p>
+                    Quando un membro dell'equipaggio effettua una prova di caratteristica, un tiro per colpire o un tiro salvezza, può usare la sua reazione per ottenere vantaggio sul tiro. Un membro dell'equipaggio può scegliere di utilizzare questa funzionalità dopo aver effettuato il tiro, ma prima che il GM dica se il tiro ha successo o meno.
+                    Questa funzionalità può essere utilizzata un numero di volte pari a 2 volte il livello della tua nave. Tutti gli usi spesi vengono recuperati quando la nave si ricarica.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardGarg4">
+                <h4>Superweapon</h4>
+                <p>
+                    La tua nave è dotata di una superarma. Come azione, un membro dell'equipaggio può attivare la superarma, che ha un arco di fuoco limitato, come descritto nel Capitolo 9. Quando attivata, un raggio di energia distruttiva che forma una linea lunga 10.000 piedi e larga 100 piedi esplode dall'arma. Ogni nave in linea deve effettuare un tiro salvezza su Destrezza (CD = 8 + il bonus di competenza del membro dell'equipaggio + il modificatore di Forza della nave). Se fallisce il tiro salvezza, la nave subisce 15d10 danni energetici, o la metà se lo riesce.
+                    Una volta utilizzata questa funzione, non potrà essere utilizzata nuovamente finché la nave non si ricaricherà.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardGarg5">
+                <h4>Cittadella</h4>
+                <p>
+                    La capacità di tutte le tue suite è raddoppiata. Se la capacità di un tipo di suite era già raddoppiata, la sua dimensione viene invece triplicata rispetto alla dimensione standard. Inoltre, la capacità massima di carburante e materiali di consumo della tua astronave raddoppia e i civili, i membri dell'equipaggio e i soldati a bordo della tua astronave hanno vantaggio sui tiri salvezza su Costituzione effettuati per evitare l'Esaurimento. Se la capacità di carburante e/o materiali di consumo era già doppia rispetto alla quantità standard, ora è triplicata rispetto alla capacità originale.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardGarg6">
+                <h4>Dreadnought Top Tier</h4>
+                <p>
+                    La tua astronave è la migliore della sua categoria. Due dei punteggi di caratteristica della tua nave aumentano di 4, e il suo massimo per questi punteggi aumenta di 4. Un altro punteggio di caratteristica aumenta di 2, e il suo massimo per questo punteggio aumenta di 2.
+                </p>
+            </div>
+            <div class="card p-2 cardSize mt-2" id="cardGarg7">
+                <h4>Devastatore</h4>
+                <p>
+                    Come azione, un singolo membro dell'equipaggio può conferire alla nave i seguenti benefici per 1 minuto:
+                </p>                       
+                <ul>
+                    <li>
+                        <p>La tua nave è resistente a tutti i danni.</p>
+                    </li>
+                    <li>
+                        <p>Gli attacchi navali della tua nave ottengono un colpo critico con un tiro di 19 o 20 sul d20.</p>
+                    </li>
+                </ul>
+                <p>
+                    Questo effetto termina anticipatamente se la nave viene disabilitata. Una volta utilizzata questa funzionalità, non potrà essere utilizzata nuovamente finché la nave non sarà stata sottoposta a lavori di ristrutturazione.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <center>
+        <button class="btn btn-primary m-5" id="downloadButton">Download</button>
+    </center>
+
+    <script src="/shipEditor.js"></script>
+</body>
+</html>
