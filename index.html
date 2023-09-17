@@ -991,15 +991,15 @@ $(document).ready(function(){
         $('#listaPrimary').append(armaSelected);
     })
     $('#selectSecondaryWeapon').on('change', function(){
-        var armaSelected = `<li class="mt-1">${$('#selectSecondaryWeapon option:selected').text()}</li>`
+        var armaSelected = `<li class="mt-1"><div class="d-flex" style="justify-content: space-between;"><label>${$('#selectSecondaryWeapon option:selected').text()}</label><button type="button" class="btn btn-danger deleteWeapon"><i class="fa-solid fa-xmark"></i></button></button></button></div></li>`
         $('#listaSecondary').append(armaSelected);
     })
     $('#selectTertiaryWeapon').on('change', function(){
-        var armaSelected = `<li class="mt-1">${$('#selectTertiaryWeapon option:selected').text()}</li>`
+        var armaSelected = `<li class="mt-1"><div class="d-flex" style="justify-content: space-between;"><label>${$('#selectTertiaryWeapon option:selected').text()}</label><button type="button" class="btn btn-danger deleteWeapon"><i class="fa-solid fa-xmark"></i></button></button></button></div></li>`
         $('#listaTertiary').append(armaSelected);
     })
     $('#selectQuaternaryWeapon').on('change', function(){
-        var armaSelected = `<li class="mt-1">${$('#selectQuaternaryWeapon option:selected').text()}</li>`
+        var armaSelected = `<li class="mt-1"><div class="d-flex" style="justify-content: space-between;"><label>${$('#selectQuaternaryWeapon option:selected').text()}</label><button type="button" class="btn btn-danger deleteWeapon"><i class="fa-solid fa-xmark"></i></button></button></button></div></li>`
         $('#listaQuaternay').append(armaSelected);
     })
 
